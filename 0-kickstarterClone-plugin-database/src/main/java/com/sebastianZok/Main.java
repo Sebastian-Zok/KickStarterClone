@@ -1,13 +1,11 @@
 package com.sebastianZok;
 
-/**
- * Hello world!
- *
- */
-public class Main
-{
-    public static void main( String[] args )
-    {
-        System.out.println( 'This is your command line based crowdfunding platform!');
+public class Main{
+
+    public static void main(String[] args) throws Exception {
+        System.out.println("Welcome to your command line based crowdfunding platform");
+        ControlPanelInterface controlPanel = new ControlPanel();
+        controlPanel.inputAction();
     }
 }
+

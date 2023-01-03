@@ -10,6 +10,7 @@
         <module name="4-kickstarterClone-abstraction" />
         <module name="2-kickstarterClone-application" />
         <module name="3-kickstarterClone-domain" />
+        <module name="0-kickstarterClone-plugin-database" />
       </profile>
     </annotationProcessing>
   </component>
