@@ -2,6 +2,8 @@ package com.sebastianZok;
 
 import com.sebastianZok.Exceptions.InvalidUsernameException;
 
+import java.util.LinkedList;
+
 public class SessionService implements SessionServiceInterface{
 
     private UserRepoInterface userRepo;
@@ -23,5 +25,7 @@ public class SessionService implements SessionServiceInterface{
     public static String getInstance(){
         return loggedInUser;
     }
+
+
 
 }

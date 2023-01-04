@@ -14,10 +14,10 @@ public class Login implements ControlPanelInterface{
         Password password = new Password(CommandLineReader.readLine());
 
         UserRepoInterface userMapper = new UserRepo();
-        SessionService sessionServiceService = new SessionService(userMapper);
+        SessionService sessionService = new SessionService(userMapper);
 
         try {
-            sessionServiceService.login(username, password);
+            sessionService.login(username, password);
         } catch (Exception e) {
             System.out.println(e);
             e.printStackTrace();

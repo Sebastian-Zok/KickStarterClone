@@ -19,7 +19,7 @@ public class CreateAccount implements ControlPanelInterface{
 
             UserRepoInterface userMapper = new UserRepo();
             UserService userService = new UserService(userMapper);
-            
+
             try {
                 if (userMapper.getUsernames().contains(username.getUsername())) {
                     System.out.println("Username already taken");
