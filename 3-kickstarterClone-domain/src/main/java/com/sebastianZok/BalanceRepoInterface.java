@@ -11,5 +11,5 @@ public interface BalanceRepoInterface {
     int getAvailable(String username);
 
 
-
+    void createNewBalance(Username userName);
 }

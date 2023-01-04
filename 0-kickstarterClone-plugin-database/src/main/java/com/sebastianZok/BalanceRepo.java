@@ -4,6 +4,7 @@ import com.sebastianZok.Exceptions.PersistException;
 import com.sebastianZok.utils.CSVReader;
 import com.sebastianZok.utils.CSVWriter;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -48,5 +49,9 @@ public class BalanceRepo implements BalanceRepoInterface{
             System.out.println(e);
         }
         return 0;
+    }
+
+    public void createNewBalance(Username username){
+        CSVWriter.writeLine(USER_FILEPATH, username.getUsername()+";0");
     }
 }

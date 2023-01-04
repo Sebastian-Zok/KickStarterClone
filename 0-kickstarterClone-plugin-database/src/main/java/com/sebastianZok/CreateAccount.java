@@ -18,7 +18,8 @@ public class CreateAccount implements ControlPanelInterface{
             Password password = new Password(CommandLineReader.readLine());
 
             UserRepoInterface userMapper = new UserRepo();
-            UserService userService = new UserService(userMapper);
+            BalanceRepoInterface balanceMapper = new BalanceRepo();
+            UserService userService = new UserService(userMapper, balanceMapper);
 
             try {
                 if (userMapper.getUsernames().contains(username.getUsername())) {

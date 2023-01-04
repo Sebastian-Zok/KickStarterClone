@@ -8,14 +8,17 @@ import java.util.UUID;
 public class UserService {
 
     private UserRepoInterface userRepo;
+    private BalanceRepoInterface balanceRepo;
 
 
-    public UserService(UserRepoInterface userRepo) {
+    public UserService(UserRepoInterface userRepo, BalanceRepoInterface balanceRepo) {
         this.userRepo = userRepo;
+        this.balanceRepo = balanceRepo;
     }
 
-    public void createNewUser(Username userName, Password password) throws InvalidUsernameException, PersistException {
-         this.userRepo.createNewUser(userName, password);
+    public void createNewUser(Username username, Password password) throws InvalidUsernameException, PersistException {
+         this.userRepo.createNewUser(username, password);
+         this.balanceRepo.createNewBalance(username);
      }
 
 
