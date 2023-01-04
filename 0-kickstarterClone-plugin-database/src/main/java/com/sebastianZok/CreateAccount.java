@@ -4,6 +4,8 @@ import com.sebastianZok.Exceptions.InvalidPasswordException;
 import com.sebastianZok.Exceptions.InvalidUsernameException;
 import com.sebastianZok.utils.CommandLineReader;
 
+import java.util.ArrayList;
+
 public class CreateAccount implements ControlPanelInterface{
 
 
@@ -17,12 +19,15 @@ public class CreateAccount implements ControlPanelInterface{
 
             UserRepoInterface userMapper = new UserRepo();
             UserService userService = new UserService(userMapper);
-
-
+            
             try {
-                String user = userService.createNewUser(username, password);
-                System.out.println("User created successfully!");
-            } catch (InvalidUsernameException e) {
+                if (userMapper.getUsernames().contains(username.getUsername())) {
+                    System.out.println("Username already taken");
+                } else {
+                    userService.createNewUser(username, password);
+                    System.out.println("User created successfully!");
+                }
+            }catch (InvalidUsernameException e) {
                 System.out.println(e);
                 e.printStackTrace();
             }

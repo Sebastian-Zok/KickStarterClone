@@ -14,8 +14,8 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    public String createNewUser(Username userName, Password password) throws InvalidUsernameException, PersistException {
+    public void createNewUser(Username userName, Password password) throws InvalidUsernameException, PersistException {
          this.userRepo.createNewUser(userName, password);
-         return null;
      }
+
 }

@@ -5,6 +5,7 @@ import com.sebastianZok.Exceptions.PersistException;
 import  com.sebastianZok.utils.CSVReader;
 import com.sebastianZok.utils.CSVWriter;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -32,6 +33,21 @@ public class UserRepo implements UserRepoInterface {
             System.out.println(e);
         }
         return false;
+    }
+
+    public ArrayList<String> getUsernames(){
+        ArrayList<String> usernames = new ArrayList<String>();
+        try{
+            LinkedList<String> data = CSVReader.read(USER_FILEPATH);
+            for(String row : data){
+                String[] rowData = row.split(";");
+               usernames.add(rowData[0]);
+            }
+            return usernames;
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
     }
 }
 

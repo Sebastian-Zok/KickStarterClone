@@ -18,7 +18,6 @@ public class Login implements ControlPanelInterface{
 
         try {
             sessionServiceService.login(username, password);
-            System.out.println("User logged in successfully!");
         } catch (Exception e) {
             System.out.println(e);
             e.printStackTrace();

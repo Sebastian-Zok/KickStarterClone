@@ -19,6 +19,11 @@ public class ControlPanel implements ControlPanelInterface {
                     "What do you want to do next?\n" +
                     "1| Create a new account\n" +
                     "2| Login to your account\n" +
+                    "3| Deposit Money\n" +
+                    "4| View Balance\n" +
+                    "5| Browse through Projects\n" +
+                    "6| Create Project\n" +
+                    "7| Manage Projects\n" +
                     "9| Quit\n"
             );
             String stringResponse = CommandLineReader.readLine();
