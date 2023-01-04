@@ -5,6 +5,8 @@ import com.sebastianZok.Exceptions.PersistException;
 import  com.sebastianZok.utils.CSVReader;
 import com.sebastianZok.utils.CSVWriter;
 
+import java.util.LinkedList;
+
 
 public class UserRepo implements UserRepoInterface {
 
@@ -17,5 +19,19 @@ public class UserRepo implements UserRepoInterface {
         CSVWriter.writeLine(USER_FILEPATH, sb.toString());
      }
 
+    public boolean checkUserPassword(Username username, Password password){
+        try{
+            LinkedList<String> data = CSVReader.read(USER_FILEPATH);
+            for(String row : data){
+                String[] rowData = row.split(";");
+                if(rowData[0].equals(username.getUsername()) && rowData[1].equals(password.getPassword())) {
+                    return true;
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
 }
 

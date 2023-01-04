@@ -9,27 +9,33 @@ public class ControlPanel implements ControlPanelInterface {
 
     public ControlPanel(){
        controls.put(1, new CreateAccount());
-       //controls.put(2, new Login());
+       controls.put(2, new Login());
     }
 
     @Override
     public void inputAction() {
         do{
-            System.out.println(
+                    System.out.println(
                     "What do you want to do next?\n" +
                     "1| Create a new account\n" +
-                    "2| Login to your account\n"
+                    "2| Login to your account\n" +
+                    "9| Quit\n"
             );
             String stringResponse = CommandLineReader.readLine();
             try{
                 int res = Integer.parseInt(stringResponse);
-                if(res==0) break;
 
+                if(res==9) break;
+                if(res > controls.size() || res < 1){
+                    System.out.println("Invalid Input");
+                }else if(SessionService.getInstance() == null && res > 2 ){
+                    System.out.println("Login required");
+                }else{
+                    controls.get(res).inputAction();
+                }
 
-                controls.get(res).inputAction();
                 System.out.println("Enter to continue");
-                String awaitKey = CommandLineReader.readLine();
-                if(!awaitKey.equals("")) break;
+                String awaitEnter = CommandLineReader.readLine();
             }catch (Exception e){
                 System.out.println(e);
             }

@@ -1,0 +1,25 @@
+package com.sebastianZok;
+
+import com.sebastianZok.Exceptions.InvalidUsernameException;
+
+public class SessionService implements SessionServiceInterface{
+
+    private UserRepoInterface userRepo;
+    public static String loggedInUser;
+
+    public SessionService(UserRepoInterface userRepo) {
+        this.userRepo = userRepo;
+    }
+
+    public void login(Username userName, Password password) {
+        if (this.userRepo.checkUserPassword(userName, password)) {
+            loggedInUser = userName.getUsername();
+            System.out.println(userName + " you are now logged in");
+        }
+    }
+
+    public static String getInstance(){
+        return loggedInUser;
+    }
+
+}

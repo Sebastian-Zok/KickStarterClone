@@ -12,7 +12,7 @@ public class Username {
         if(username.length()>20) throw new InvalidUsernameException("Username requires less than 20 characters");
         if(username == "admin") throw new InvalidUsernameException("Username forbidden");
         for(Character illegalCharacter:illegalCharacter){
-            if(username.contains(illegalCharacter.toString())) throw new InvalidUsernameException("username: "+username+" contains illegal symbol");
+            if(username.contains(illegalCharacter.toString())) throw new InvalidUsernameException("username: "+username+" contains a illegal symbol");
         }
 
         // TODO check for already in use

@@ -14,7 +14,7 @@ public class Password {
     Password(String password) throws InvalidPasswordException {
         if(password.length()<4) throw new InvalidPasswordException("Password requires at least four characters");
         for(Character illegalCharacter:illegalCharacter){
-            if(password.contains(illegalCharacter.toString())) throw new InvalidPasswordException("password contains illegal symbol");
+            if(password.contains(illegalCharacter.toString())) throw new InvalidPasswordException("Password contains illegal symbol");
         }
          this.password = password;
     }

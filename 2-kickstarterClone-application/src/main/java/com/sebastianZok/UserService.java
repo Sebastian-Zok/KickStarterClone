@@ -9,10 +9,10 @@ public class UserService {
 
     private UserRepoInterface userRepo;
 
+
     public UserService(UserRepoInterface userRepo) {
         this.userRepo = userRepo;
     }
-
 
     public String createNewUser(Username userName, Password password) throws InvalidUsernameException, PersistException {
          this.userRepo.createNewUser(userName, password);
