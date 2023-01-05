@@ -1,3 +1,4 @@
-Title;Owner;Goal;Pledge;Timestamp
-Lu11bay;asdf;10000;10;2023-01-04 18:58:05.706
-asdas;asdf;12;1;2023-01-05 12:23:41.014
+Title;Owner;Goal;Pledge;Timestamp;Status
+Lu11bay;asdf;10000;10;2023-01-04 18:58:05.706;active
+asdas;asdf;12;1;2023-01-05 12:23:41.014;false;active
+shit;asdf;100000;10000;2023-01-05 23:29:23.002;active

@@ -5,7 +5,7 @@ import java.io.IOException;
 public interface BalanceServiceInterface {
 
 
-    public int getBalance(String username);
-
-    public void addBalance(String username, int value) throws IOException;
+      int getBalance(String username);
+      int getAvailable(String username);
+      void addBalance(String username, int value) throws IOException;
 }

@@ -38,17 +38,15 @@ public class BalanceRepo implements BalanceRepoInterface{
 
 
     public int getAvailable(String username){
-        try{
-            LinkedList<String> data = CSVReader.read(USER_FILEPATH);
-            for(String row : data){
-                String[] rowData = row.split(";");
-                if(username == rowData[0]) return Integer.parseInt(rowData[1]);
-            }
-            return 0;
-        }catch (Exception e){
-            System.out.println(e);
+        int total = getTotal(username);
+        TransactionRepoInterface transactionRepo = new TransactionRepo();
+        ArrayList<String> pledges = transactionRepo.getUserPledges(username);
+        ProjectRepoInterface projectsRepo = new ProjectRepo();
+
+        for(int i = 0; i< pledges.size(); i++){
+            total -= projectsRepo.getProjectPledge(pledges.get(i));
         }
-        return 0;
+        return total;
     }
 
     public void createNewBalance(Username username){

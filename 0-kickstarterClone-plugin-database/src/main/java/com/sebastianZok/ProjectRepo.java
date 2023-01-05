@@ -27,11 +27,50 @@ public class ProjectRepo implements ProjectRepoInterface {
         try{
             LinkedList<String> data = CSVReader.read(USER_FILEPATH);
             for(String row : data){
-                if(!row.equals("Title;Owner;Goal;Pledge;Timestamp")){
+                if(!row.equals("Title;Owner;Goal;Pledge;Timestamp;Status")){
                 String[] rowData = row.split(";");
                 Timestamp ts = Timestamp.valueOf(rowData[4]);
                 projects.add(new Project(rowData[0], rowData[1], Integer.parseInt(rowData[2]), Integer.parseInt(rowData[3]), ts));
             }
+            }
+            return projects;
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public int getProjectPledge(String title){
+        ArrayList<Project> projects = new ArrayList<Project>();
+        try{
+            LinkedList<String> data = CSVReader.read(USER_FILEPATH);
+            for(String row : data){
+                if(!row.equals("Title;Owner;Goal;Pledge;Timestamp;Status")){
+                    String[] rowData = row.split(";");
+                     if(rowData[0].equals(title)){
+                         return Integer.parseInt(rowData[3]);
+                     }
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+
+    public ArrayList<Project> getProjectsOfUser(String username){
+        ArrayList<Project> projects = new ArrayList<Project>();
+        try{
+            LinkedList<String> data = CSVReader.read(USER_FILEPATH);
+            for(String row : data){
+                if(!row.equals("Title;Owner;Goal;Pledge;Timestamp;Status")){
+                    String[] rowData = row.split(";");
+                    if(rowData[1].equals(username)){
+                    Timestamp ts = Timestamp.valueOf(rowData[4]);
+                    projects.add(new Project(rowData[0], rowData[1], Integer.parseInt(rowData[2]), Integer.parseInt(rowData[3]), ts));
+                    }
+                }
             }
             return projects;
         }catch (Exception e){

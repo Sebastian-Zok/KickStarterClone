@@ -1,7 +1,5 @@
 package com.sebastianZok;
 
-import com.sebastianZok.Exceptions.InvalidUsernameException;
-import com.sebastianZok.Exceptions.PersistException;
 
 import java.io.IOException;
 
@@ -13,10 +11,14 @@ public class BalanceService implements BalanceServiceInterface{
         this.balanceRepo = balanceRepo;
     }
 
-
     public int getBalance(String username){
        return this.balanceRepo.getTotal(username);
     }
+    public int getAvailable(String username){
+        return this.balanceRepo.getAvailable(username);
+    }
+
+
 
     public void addBalance(String username, int value) throws IOException {
         int oldBalance = getBalance(username);

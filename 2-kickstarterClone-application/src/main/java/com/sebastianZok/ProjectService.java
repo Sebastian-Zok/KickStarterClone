@@ -23,4 +23,8 @@ public class ProjectService implements ProjectServiceInterface {
       return projectRepo.getProjects();
     }
 
+    public ArrayList<Project> getProjectsOfUser(String username){
+        return projectRepo.getProjectsOfUser(username);
+    }
+
 }

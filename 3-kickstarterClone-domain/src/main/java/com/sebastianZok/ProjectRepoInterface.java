@@ -10,4 +10,9 @@ public interface ProjectRepoInterface {
     void createNewProject(String title, String owner, int goal, int pledge, Timestamp timestamp) throws PersistException;
 
     ArrayList<Project> getProjects();
+
+    int getProjectPledge(String title);
+
+    ArrayList<Project> getProjectsOfUser(String username);
+
 }
