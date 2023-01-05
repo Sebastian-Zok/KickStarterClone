@@ -17,7 +17,7 @@ public class Deposit implements ControlPanelInterface{
 
             try {
                 balanceService.addBalance(SessionService.loggedInUser, value);
-                System.out.print("Deposit successfully!");
+                System.out.println("Deposit successfully!");
             } catch (Exception e) {
                 System.out.println(e);
                 e.printStackTrace();

@@ -12,13 +12,14 @@ public class ControlPanel implements ControlPanelInterface {
        controls.put(2, new Login());
        controls.put(3, new ViewBalance());
        controls.put(4, new Deposit());
+       controls.put(5, new Browse());
+       controls.put(6, new CreateProject());
     }
 
     @Override
     public void inputAction() {
         do{
                     System.out.println(
-                    (SessionService.loggedInUser != null ? ("User:" + SessionService.loggedInUser) : ("You are not logged in")) + "\n" +
                     "What do you want to do next?\n" +
                     "1| Create a new account\n" +
                     "2| Login to your account\n" +
