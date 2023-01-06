@@ -20,7 +20,7 @@ public class ControlPanel implements ControlPanelInterface {
     @Override
     public void inputAction() {
         do{
-
+                    new Mediator().mediate();
 
                     System.out.println(
                     "What do you want to do next?\n" +

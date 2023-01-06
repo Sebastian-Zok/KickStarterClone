@@ -44,7 +44,8 @@ public class BalanceRepo implements BalanceRepoInterface{
         ProjectRepoInterface projectsRepo = new ProjectRepo();
 
         for(int i = 0; i< pledges.size(); i++){
-            total -= projectsRepo.getProjectPledge(pledges.get(i));
+            if(projectsRepo.getProjectStatus(pledges.get(i)).equals("active")){
+             total -= projectsRepo.getProjectPledge(pledges.get(i));}
         }
         return total;
     }

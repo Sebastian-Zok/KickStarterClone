@@ -13,8 +13,13 @@ public interface ProjectRepoInterface {
 
      Project getProject(String title);
 
+    String getProjectStatus(String title);
+
     int getProjectPledge(String title);
 
     ArrayList<Project> getProjectsOfUser(String username);
 
+    ArrayList<Project> getActiveProjects();
+
+    void setProjectStatus(Project project, String status);
 }

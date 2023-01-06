@@ -18,7 +18,10 @@ public class BalanceService implements BalanceServiceInterface{
         return this.balanceRepo.getAvailable(username);
     }
 
-
+    public void decreaseBalance(String username, int value) throws IOException {
+        int oldBalance = getBalance(username);
+        this.balanceRepo.setBalance(username, oldBalance - value);
+    }
 
     public void addBalance(String username, int value) throws IOException {
         int oldBalance = getBalance(username);

@@ -16,4 +16,8 @@ public interface ProjectServiceInterface {
 
     void createNewProject(String title, int goal, int pledge) throws PersistException;
 
+    ArrayList<Project> getActiveProjects();
+    void setProjectStatus(Project project, String status);
+
+
 }

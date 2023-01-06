@@ -34,6 +34,10 @@ public class ProjectService implements ProjectServiceInterface {
         return projectRepo.getProject(title);
     }
 
+    public ArrayList<Project>   getActiveProjects(){
+        return projectRepo.getActiveProjects();
+    }
+
     public long getRemainingDays(String title) {
         Project project = projectRepo.getProject(title);
         Calendar cal = Calendar.getInstance();
@@ -56,7 +60,9 @@ public class ProjectService implements ProjectServiceInterface {
         return false;
     }
 
-
+    public void setProjectStatus(Project project, String status){
+        projectRepo.setProjectStatus(project, status);
+     }
 
     public ArrayList<Project> getProjectsOfUser(String username){
         return projectRepo.getProjectsOfUser(username);

@@ -32,12 +32,8 @@ public class ManageProjects implements ControlPanelInterface {
         System.out.println("######################################################"); }
         );
 
-        System.out.println("######################################################");
-        System.out.println("######################################################");
-        System.out.println("######################################################");
         System.out.println("Projects you pledged for: ");
         System.out.println("######################################################");
-
 
         ArrayList<String> pledges = transactionService.getUserPledges(SessionService.loggedInUser);
 
@@ -45,7 +41,7 @@ public class ManageProjects implements ControlPanelInterface {
             Project project = projectService.getProject(pledge);
             System.out.println("" +
                     "Title: "+project.getTitle() + "\n" +
-                    "Status: "+project.getGoal() + "\n" +
+                    "Status: "+project.getStatus() + "\n" +
                     "Days Left: "+ projectService.getRemainingDays(project.getTitle())+ "\n" +
                     "Goal: "+project.getGoal() + "\n" +
                     "Raised sum: "+ transactionService.getProjectPledgeCount(project.getTitle()) * project.getPledge() + "\n" +
