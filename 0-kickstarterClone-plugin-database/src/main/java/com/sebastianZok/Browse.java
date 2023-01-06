@@ -34,6 +34,7 @@ public class Browse implements ControlPanelInterface {
                 System.out.println("Owner: "+project.getOwner());
                 System.out.println("Goal: "+project.getGoal());
                 System.out.println("Pledge: "+ project.getPledge());
+                System.out.println("Days Left: "+ projectService.getRemainingDays(project.getTitle()));
                 System.out.println("Raised sum: "+ transactionService.getProjectPledgeCount(project.getTitle()) * project.getPledge());
                 System.out.println("############################################");
 
@@ -62,14 +63,19 @@ public class Browse implements ControlPanelInterface {
                           String awaitEnter = CommandLineReader.readLine();
                           break;
                         }
-                        if(balanceService.getAvailable(SessionService.loggedInUser)>project.getPledge()){
-                            transactionService.createNewPledge(project.getTitle());
-                            System.out.println("Pledge successful!");
-                            System.out.println("Enter to continue");
+                        if(!projectService.isProjectActive(project.getTitle())){
+                            System.out.println("Sorry but the deadline is already over");
                             String awaitEnter = CommandLineReader.readLine();
                             break;
                         }
-                        System.out.println("You don't have enough liquidity");
+                        if(balanceService.getAvailable(SessionService.loggedInUser)<project.getPledge()){
+                            System.out.println("You don't have enough liquidity");
+                            String awaitEnter = CommandLineReader.readLine();
+                            break;
+                        }
+                        transactionService.createNewPledge(project.getTitle());
+                        System.out.println("Pledge successful!");
+                        System.out.println("Enter to continue");
                         String awaitEnter = CommandLineReader.readLine();
                         break;
                     default:

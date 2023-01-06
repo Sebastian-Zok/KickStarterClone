@@ -11,6 +11,8 @@ public interface ProjectRepoInterface {
 
     ArrayList<Project> getProjects();
 
+     Project getProject(String title);
+
     int getProjectPledge(String title);
 
     ArrayList<Project> getProjectsOfUser(String username);

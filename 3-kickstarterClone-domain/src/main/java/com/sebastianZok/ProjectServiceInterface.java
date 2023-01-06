@@ -7,8 +7,13 @@ import java.util.ArrayList;
 public interface ProjectServiceInterface {
 
        ArrayList<Project> getProjects();
-        ArrayList<Project> getProjectsOfUser();
+        ArrayList<Project> getProjectsOfUser(String username);
 
-        void createNewProject(String title, int goal, int pledge) throws PersistException;
+     Project getProject(String title);
+     long getRemainingDays(String title);
+
+    boolean isProjectActive(String title);
+
+    void createNewProject(String title, int goal, int pledge) throws PersistException;
 
 }

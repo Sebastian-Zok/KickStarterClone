@@ -23,7 +23,7 @@ public class TransactionService implements TransactionServiceInterface {
     }
 
     public ArrayList<String> getProjectPledgers(String title){
-        return transactionRepo.getUserPledges(title);
+        return transactionRepo.getProjectPledgers(title);
     }
 
     public int getProjectPledgeCount(String title){

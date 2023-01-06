@@ -14,11 +14,14 @@ public class ControlPanel implements ControlPanelInterface {
        controls.put(4, new Deposit());
        controls.put(5, new Browse());
        controls.put(6, new CreateProject());
+       controls.put(7, new ManageProjects());
     }
 
     @Override
     public void inputAction() {
         do{
+
+
                     System.out.println(
                     "What do you want to do next?\n" +
                     "1| Create a new account\n" +
