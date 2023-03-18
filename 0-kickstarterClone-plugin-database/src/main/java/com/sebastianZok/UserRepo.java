@@ -8,6 +8,7 @@ import com.sebastianZok.utils.CSVWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.sebastianZok.utils.CommandLineWriter;
 
 public class UserRepo implements UserRepoInterface {
 
@@ -26,12 +27,15 @@ public class UserRepo implements UserRepoInterface {
             for(String row : data){
                 String[] rowData = row.split(";");
                 if(rowData[0].equals(username.getUsername()) && rowData[1].equals(password.getPassword())) {
+                    CommandLineWriter.write(username.getUsername() + " you are now logged in!");
                     return true;
                 }
             }
         }catch (Exception e){
-            System.out.println(e);
+            CommandLineWriter.write(e.toString());
         }
+        CommandLineWriter.write("Password or Username incorrect");
+
         return false;
     }
 
@@ -45,7 +49,7 @@ public class UserRepo implements UserRepoInterface {
             }
             return usernames;
         }catch (Exception e){
-            System.out.println(e);
+            CommandLineWriter.write(e.toString());
         }
         return null;
     }

@@ -2,6 +2,7 @@ package com.sebastianZok;
 
 import com.sebastianZok.utils.CommandLineReader;
  import java.util.HashMap;
+import com.sebastianZok.utils.CommandLineWriter;
 
 public class ControlPanel implements ControlPanelInterface {
 
@@ -22,7 +23,7 @@ public class ControlPanel implements ControlPanelInterface {
         do{
                     new Mediator().mediate();
 
-                    System.out.println(
+                    CommandLineWriter.write(
                     "What do you want to do next?\n" +
                     "1| Create a new account\n" +
                     "2| Login to your account\n" +
@@ -39,17 +40,17 @@ public class ControlPanel implements ControlPanelInterface {
 
                 if(res==9) break;
                 if(res > controls.size() || res < 1){
-                    System.out.println("Invalid Input");
+                    CommandLineWriter.write("Invalid Input");
                 }else if(SessionService.getInstance() == null && res > 2 ){
-                    System.out.println("Login required");
+                    CommandLineWriter.write("Login required");
                 }else{
                     controls.get(res).inputAction();
                 }
 
-                System.out.println("Enter to continue");
+                CommandLineWriter.write("Enter to continue");
                 String awaitEnter = CommandLineReader.readLine();
             }catch (Exception e){
-                System.out.println(e);
+                CommandLineWriter.write(e.toString());
             }
         }while(true);
     }

@@ -17,8 +17,6 @@ public class SessionService implements SessionServiceInterface{
         if (this.userRepo.checkUserPassword(userName, password)) {
             loggedInUser = userName.getUsername();
             System.out.println(loggedInUser + " you are now logged in!");
-        }else {
-            System.out.println("Password or Username incorrect");
         }
     }
 

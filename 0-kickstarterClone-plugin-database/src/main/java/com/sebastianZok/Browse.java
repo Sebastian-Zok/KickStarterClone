@@ -1,6 +1,8 @@
 package com.sebastianZok;
 
 import com.sebastianZok.utils.CommandLineReader;
+import com.sebastianZok.utils.CommandLineWriter;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,21 +29,19 @@ public class Browse implements ControlPanelInterface {
             do {
 
                 Project project = projects.get(index);
-
-
-                System.out.println("############################################");
-                System.out.println(project.getTitle());
-                System.out.println("Owner: "+project.getOwner());
-                System.out.println("Goal: "+project.getGoal());
-                System.out.println("Pledge: "+ project.getPledge());
-                System.out.println("Days Left: "+ projectService.getRemainingDays(project.getTitle()));
-                System.out.println("Raised sum: "+ transactionService.getProjectPledgeCount(project.getTitle()) * project.getPledge());
-                System.out.println("############################################");
-
-                System.out.println("1| Back");
-                System.out.println("2| Next");
-                System.out.println("3| Pledge");
-                System.out.println("4| Exit");
+                CommandLineWriter.spacer();
+                CommandLineWriter.write(project.getTitle());
+                CommandLineWriter.write("");
+                CommandLineWriter.write("Owner: "+project.getOwner());
+                CommandLineWriter.write("Goal: "+project.getGoal());
+                CommandLineWriter.write("Pledge: "+ project.getPledge());
+                CommandLineWriter.write("Days Left: "+ projectService.getRemainingDays(project.getTitle()));
+                CommandLineWriter.write("Raised sum: "+ transactionService.getProjectPledgeCount(project.getTitle()) * project.getPledge());
+                CommandLineWriter.spacer();
+                CommandLineWriter.write("1| Back");
+                CommandLineWriter.write("2| Next");
+                CommandLineWriter.write("3| Pledge");
+                CommandLineWriter.write("4| Exit");
 
 
                 int input = Integer.parseInt(CommandLineReader.readLine());
@@ -58,24 +58,24 @@ public class Browse implements ControlPanelInterface {
                        break;
                     case 3:
                         if(transactionService.isAlreadyPledged(project.getTitle())){
-                          System.out.println("You already pledged for this project");
-                          System.out.println("Enter to continue");
+                          CommandLineWriter.write("You already pledged for this project");
+                          CommandLineWriter.write("Enter to continue");
                           String awaitEnter = CommandLineReader.readLine();
                           break;
                         }
                         if(!projectService.isProjectActive(project.getTitle())){
-                            System.out.println("Sorry but the deadline is already over");
+                            CommandLineWriter.write("Sorry but the deadline is already over");
                             String awaitEnter = CommandLineReader.readLine();
                             break;
                         }
                         if(balanceService.getAvailable(SessionService.loggedInUser)<project.getPledge()){
-                            System.out.println("You don't have enough liquidity");
+                            CommandLineWriter.write("You don't have enough liquidity");
                             String awaitEnter = CommandLineReader.readLine();
                             break;
                         }
                         transactionService.createNewPledge(project.getTitle());
-                        System.out.println("Pledge successful!");
-                        System.out.println("Enter to continue");
+                        CommandLineWriter.write("Pledge successful!");
+                        CommandLineWriter.write("Enter to continue");
                         String awaitEnter = CommandLineReader.readLine();
                         break;
                     default:
@@ -87,7 +87,7 @@ public class Browse implements ControlPanelInterface {
                 }
             } while (true);
         }catch(Exception e){
-            System.out.println("404 - You have seen all projects :(");
+            CommandLineWriter.write("404 - You have seen all projects :(");
         }
 
     }

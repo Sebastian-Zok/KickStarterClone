@@ -1,8 +1,9 @@
 package com.sebastianZok;
 
 import java.util.ArrayList;
+import com.sebastianZok.utils.CommandLineWriter;
 
-public class ManageProjects implements ControlPanelInterface {
+public class ManageProjects extends CreateProject implements ControlPanelInterface {
 
     @Override
     public void inputAction() {
@@ -15,12 +16,12 @@ public class ManageProjects implements ControlPanelInterface {
 
         ArrayList<Project> userProjects = projectService.getProjectsOfUser(SessionService.loggedInUser);
 
-        System.out.println("######################################################");
-        System.out.println("Your projects: ");
-        System.out.println("######################################################");
+        CommandLineWriter.spacer();
+        CommandLineWriter.write("Your projects: ");
+        CommandLineWriter.spacer();
 
         userProjects.forEach((project) -> {
-        System.out.println("" +
+        CommandLineWriter.write("" +
                         "Title: "+project.getTitle() + "\n" +
                         "Status: "+project.getStatus() + "\n" +
                         "Days Left: "+ projectService.getRemainingDays(project.getTitle())+ "\n" +
@@ -29,17 +30,17 @@ public class ManageProjects implements ControlPanelInterface {
                         "Raised sum: "+ transactionService.getProjectPledgeCount(project.getTitle()) * project.getPledge() + "\n" +
                         "Pledgers: "+   String.join(", ", transactionService.getProjectPledgers(project.getTitle()))
                 );
-        System.out.println("######################################################"); }
+        CommandLineWriter.spacer(); }
         );
 
-        System.out.println("Projects you pledged for: ");
-        System.out.println("######################################################");
+        CommandLineWriter.write("Projects you pledged for: ");
+        CommandLineWriter.spacer();
 
         ArrayList<String> pledges = transactionService.getUserPledges(SessionService.loggedInUser);
 
         pledges.forEach((pledge) -> {
             Project project = projectService.getProject(pledge);
-            System.out.println("" +
+            CommandLineWriter.write("" +
                     "Title: "+project.getTitle() + "\n" +
                     "Status: "+project.getStatus() + "\n" +
                     "Days Left: "+ projectService.getRemainingDays(project.getTitle())+ "\n" +
@@ -47,7 +48,7 @@ public class ManageProjects implements ControlPanelInterface {
                     "Raised sum: "+ transactionService.getProjectPledgeCount(project.getTitle()) * project.getPledge() + "\n" +
                     "Pledge: "+project.getPledge()
             );
-            System.out.println("######################################################"); }
+            CommandLineWriter.spacer(); }
         );
 
 
