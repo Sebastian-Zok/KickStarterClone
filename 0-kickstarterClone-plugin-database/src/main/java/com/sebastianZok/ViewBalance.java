@@ -1,4 +1,5 @@
 package com.sebastianZok;
+import com.sebastianZok.utils.CommandLineWriter;
 
 public class ViewBalance implements ControlPanelInterface{
 
@@ -7,9 +8,9 @@ public class ViewBalance implements ControlPanelInterface{
 
         BalanceRepoInterface  balanceMapper = new BalanceRepo();
         BalanceService balanceService = new BalanceService(balanceMapper);
-        System.out.println("Your total balance is " + balanceService.getBalance(SessionService.loggedInUser) );
-        System.out.println(balanceService.getAvailable(SessionService.loggedInUser) + " is still available");
-        System.out.println((balanceService.getBalance(SessionService.loggedInUser) - balanceService.getAvailable(SessionService.loggedInUser)) + " is pledged");
+        CommandLineWriter.write("Your total balance is " + balanceService.getBalance(SessionService.loggedInUser) );
+        CommandLineWriter.write(balanceService.getAvailable(SessionService.loggedInUser) + " is still available");
+        CommandLineWriter.write((balanceService.getBalance(SessionService.loggedInUser) - balanceService.getAvailable(SessionService.loggedInUser)) + " is pledged");
 
     }
 }
