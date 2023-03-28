@@ -10,21 +10,19 @@ import java.util.LinkedList;
 
 public class TransactionRepo implements TransactionRepoInterface{
 
-    public static String USER_FILEPATH = "Data/Transactions.csv";
+    public static String Transactions_FILEPATH = "Data/Transactions.csv";
     public TransactionRepo() {}
 
     public void createNewPledge(String title, String user) throws PersistException {
         StringBuilder sb = new StringBuilder();
         sb.append(title+";").append(user);
-        CSVWriter.writeLine(USER_FILEPATH, sb.toString());
+        CSVWriter.writeLine(Transactions_FILEPATH, sb.toString());
     }
-
-
 
     public ArrayList<String> getUserPledges(String username){
         ArrayList<String> projects = new ArrayList<String>();
         try{
-            LinkedList<String> data = CSVReader.read(USER_FILEPATH);
+            LinkedList<String> data = CSVReader.read(Transactions_FILEPATH);
             for(String row : data){
                 if(!row.equals("Title;User")){
                     String[] rowData = row.split(";");
@@ -43,7 +41,7 @@ public class TransactionRepo implements TransactionRepoInterface{
     public ArrayList<String> getProjectPledgers(String projectTitle){
         ArrayList<String> users = new ArrayList<String>();
         try{
-            LinkedList<String> data = CSVReader.read(USER_FILEPATH);
+            LinkedList<String> data = CSVReader.read(Transactions_FILEPATH);
             for(String row : data){
                 if(!row.equals("Title;User")){
                     String[] rowData = row.split(";");
@@ -63,7 +61,7 @@ public class TransactionRepo implements TransactionRepoInterface{
         int count = 0;
 
         try{
-            LinkedList<String> data = CSVReader.read(USER_FILEPATH);
+            LinkedList<String> data = CSVReader.read(Transactions_FILEPATH);
             for(String row : data){
                 if(!row.equals("Title;User")){
                     String[] rowData = row.split(";");
@@ -78,4 +76,9 @@ public class TransactionRepo implements TransactionRepoInterface{
         }
         return 0;
     }
+
+    public void setTransactions_FILEPATH(String transactions_FILEPATH) {
+        Transactions_FILEPATH = transactions_FILEPATH;
+    }
+
 }

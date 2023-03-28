@@ -15,4 +15,6 @@ public interface TransactionRepoInterface {
 
     int getProjectPledgeCount(String projectTitle);
 
+       void setTransactions_FILEPATH(String transactionsFilepath);
+
 }
