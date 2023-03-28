@@ -37,8 +37,8 @@ public class PasswordTest {
     @DisplayName("test getPassword")
     public void testGetPassword(){
         assertDoesNotThrow(() -> {
-            Password name = new Password("test");
-            assertEquals(name.getPassword(), "test");
+            Password pwd = new Password("test");
+            assertEquals(pwd.getPassword(), "test");
         });
     }
 

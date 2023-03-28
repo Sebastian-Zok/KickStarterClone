@@ -54,7 +54,7 @@ public class ProjectService implements ProjectServiceInterface {
     }
 
     public boolean isProjectActive(String title){
-        if(getRemainingDays(title)!= 0){
+        if(getRemainingDays(title)> 0){
             return true;
         }
         return false;
