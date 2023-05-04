@@ -43,5 +43,4 @@ public class UsernameTest {
             assertEquals(name.getUsername(), "test");
         });
     }
-
 }

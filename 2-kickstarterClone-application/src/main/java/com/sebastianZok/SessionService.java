@@ -24,6 +24,4 @@ public class SessionService implements SessionServiceInterface{
         return loggedInUser;
     }
 
-
-
 }
